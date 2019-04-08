@@ -37,8 +37,8 @@ F - Jacobian Matrix of State Transition function
 h - Observation Transition function of X_t
 H - Jacobian Matrix of Observation Transition function
 Z_t - Current Observation from different sensors
-R - Sensor constant error 
-Q - Processing noise for both sensor
+R - Sensor constant error: R is big, G is smaller, more rely on prediction
+Q - Processing noise for both sensor: Q is big, Prediction error is high, more rely on observation
 ```
 
 ## Example  
@@ -48,7 +48,7 @@ Example1 to example3 use of Linear Kalman Filter for examples in the tutorials
 Example4 to Example6 use of Extended Kalman Filter for them.
 
 **Would update for more concrete example**  
-[ ] Mouse tracker Example
+[x] Mouse tracker Example
 [ ] GPS Sensor fusion Example
 [ ] Other Examples.
 

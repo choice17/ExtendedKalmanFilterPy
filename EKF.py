@@ -201,12 +201,15 @@ class EKF(EKF_interface):
 	@param F [N x N] Knownledge non-linear state transition Jacobian matrix (partial derivative)
 	@func h non-linear observation transition  function
 	@param H [M x N] Knownledge non-linear observation transition of Jacobian matrix (partial derivative)
-	@param P [N x N] Covariance of Prediction
+	@param P [N x N] Covariance of Prediction: P is big => rely on measurement
 	@param G [N x M] Kalmam gain
-	@param R [M x M] Sensor noise
-	@param Q [N x N] Process noise
+	@param R [M x M] Sensor noise : R is big => G is small => rely on prediction
+	@param Q [N x N] Process noise : Q is big => P is big => rely on measurement
 	"""
 	def setInit(self, X, Z, U=None, P=None, G=None, R=None, Q=None):
+		"""
+		pval=0.1, qval=1e-4, rval=0.1
+		"""
 		if len(X.shape) == 1:
 			X = np.expand_dim(X, axis=1)
 		if len(X.shape) == 2:
